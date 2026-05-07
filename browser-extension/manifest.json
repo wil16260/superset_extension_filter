@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Superset Inline Filter Plugin",
+  "version": "1.0.0",
+  "description": "Injecte le plugin InlineFilterBar dans Apache Superset sans modification serveur.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://VOTRE-SUPERSET.example.com/*"
+      ],
+      "js": ["inject.js"],
+      "run_at": "document_idle",
+      "world": "MAIN"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["inline-filter-plugin.umd.js"],
+      "matches": ["https://VOTRE-SUPERSET.example.com/*"]
+    }
+  ],
+  "permissions": [],
+  "host_permissions": [
+    "https://VOTRE-SUPERSET.example.com/*"
+  ]
+}
